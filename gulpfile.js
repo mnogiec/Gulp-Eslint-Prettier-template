@@ -5,6 +5,7 @@ const cssnano = require('cssnano');
 const concat = require('gulp-concat');
 const postcss = require('gulp-postcss');
 const sass = require('gulp-sass');
+const babel = require('gulp-babel');
 
 // File path variables
 const files = {
@@ -24,6 +25,7 @@ const sassTask = () => {
 const jsTask = () => {
   return src(files.jsPath)
     .pipe(concat('scripts.js'))
+    .pipe(babel({ presets: ['@babel/env'] }))
     .pipe(dest('dist'));
 };
 
